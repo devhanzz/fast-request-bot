@@ -1,6 +1,6 @@
 const { io } = require("socket.io-client");
 
-const SERVER_URL = " "; 
+                        const SERVER_URL = "https://visitor-live-counter.onrender.com"; 
 
 const bot = io(SERVER_URL, {
     transports: ['websocket']
