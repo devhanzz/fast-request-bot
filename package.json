@@ -1,8 +1,10 @@
 {
-  "name": "fast-request-bot",
+  "name": "socket-bot",
   "version": "1.0.0",
-  "description": "Fast automated request bot",
   "main": "bot.js",
+  "dependencies": {
+    "socket.io-client": "^4.7.5"
+  },
   "scripts": {
     "start": "node bot.js"
   }
