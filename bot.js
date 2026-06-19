@@ -1,12 +1,13 @@
 const { io } = require("socket.io-client");
 
 const SERVER_URL = "https://visitor-live-counter.onrender.com"; 
-const BOT_COUNT = 50; 
+const BOT_COUNT = 1000; 
 
 for (let i = 0; i < BOT_COUNT; i++) {
     setTimeout(() => {
         const bot = io(SERVER_URL, {
-            transports: ['websocket']
+            transports: ['websocket'],
+            reconnection: false 
         });
 
         bot.on("connect", () => {
@@ -18,13 +19,8 @@ for (let i = 0; i < BOT_COUNT; i++) {
             });
         });
 
-        setInterval(() => {
-            if (bot.connected) {
-                bot.emit("initUser", {
-                    localTime: new Date().toLocaleTimeString(),
-                    localDate: new Date().toLocaleDateString()
-                });
-            }
-        }, 30000);
-    }, i * 200); 
+        bot.on("connect_error", () => {
+            bot.disconnect();
+        });
+    }, i * 50); 
 }
