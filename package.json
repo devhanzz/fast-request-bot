@@ -1,0 +1,9 @@
+{
+  "name": "fast-request-bot",
+  "version": "1.0.0",
+  "description": "Fast automated request bot",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js"
+  }
+}
